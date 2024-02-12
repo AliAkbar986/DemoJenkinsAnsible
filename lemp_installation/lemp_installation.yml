@@ -1,0 +1,12 @@
+- hosts: security_group_web_server_dmz
+  become: true
+  tasks:
+  
+  - name: Download foo.conf
+    get_url:
+      url: https://raw.githubusercontent.com/hiakki/automation/master/Wordpress_Installation_on_LEMP_Stack_in_one_click.sh
+      dest: /opt/auto.sh
+      mode: '0755'
+    
+  - name: Installation
+    shell: bash /opt/auto.sh 2
